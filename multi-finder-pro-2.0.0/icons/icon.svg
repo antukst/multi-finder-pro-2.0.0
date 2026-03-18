@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <defs>
+    <linearGradient id="main-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff75a0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7e57c2;stop-opacity:1" />
+    </linearGradient>
+    <filter id="p-glow">
+      <feGaussianBlur stdDeviation="2" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Magnifying Glass Circle UI -->
+  <circle cx="58" cy="58" r="42" fill="#1e1e2e" stroke="url(#main-grad)" stroke-width="5" />
+  
+  <!-- Highlight Lines (Cyber/Survey vibe) -->
+  <rect x="35" y="40" width="45" height="5" rx="2.5" fill="#4CAF50" />
+  <rect x="35" y="55" width="45" height="5" rx="2.5" fill="#9C27B0" opacity="0.8" />
+  <rect x="35" y="70" width="30" height="5" rx="2.5" fill="#E91E63" />
+
+  <!-- Magnifying Glass Handle -->
+  <rect x="85" y="85" width="35" height="10" rx="4" transform="rotate(45 85 85)" fill="url(#main-grad)" />
+
+  <!-- Small Orange Sub-Logo (The specific Orange Icon in the user's image) -->
+  <circle cx="100" cy="100" r="24" fill="#ff5722" stroke="#fff" stroke-width="3" />
+  <!-- Eye/Camera Icon inside orange circle -->
+  <circle cx="100" cy="100" r="10" fill="none" stroke="#fff" stroke-width="4" />
+  <circle cx="100" cy="100" r="3" fill="#fff" />
+</svg>
