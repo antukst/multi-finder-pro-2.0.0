@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="grain"></div>
+    <div class="container">
+        <header class="header">
+            <div class="logo-box">
+                <img src="icons/icon.png" class="main-logo-img" alt="Multi-Finder Logo">
+            </div>
+            <div class="logo-text">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <h1>Text Multi-Finder</h1>
+                    <span id="themeToggle" style="cursor:pointer; font-size:20px; filter: drop-shadow(0 0 5px rgba(255,255,255,0.2));">🌙</span>
+                </div>
+                <div class="tagline" style="display:flex; flex-wrap:wrap; gap:5px; margin-top:4px;">
+                    <span style="background:rgba(165,180,252,0.1); padding:2px 6px; border-radius:4px; font-size:10px;">PROFESSIONAL STEALTH ENGINE</span>
+                    <span style="background:rgba(165,180,252,0.1); padding:2px 6px; border-radius:4px; font-size:10px;">TRAP DETECTION</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="tabs">
+            <div class="tab active" data-tab="finder">Finder</div>
+            <div class="tab" data-tab="traps">T.Q</div>
+            <div class="tab" data-tab="settings">Advanced</div>
+        </div>
+
+        <div id="finder" class="tab-content active">
+            <textarea id="words" placeholder="apple, banana, orange..."></textarea>
+            <div class="history-section">
+                <div class="history-title">RECENT SEARCHES</div>
+                <div class="history-list" id="historyList">
+                    <!-- History items injected here -->
+                </div>
+            </div>
+            <div class="config-row">
+                <div class="config-item"><label>Match Mode</label><select id="matchMode"><option value="exact">Exact</option><option value="similar">Similar</option></select></div>
+                <div class="config-item" style="flex-direction:row; align-items:center; justify-content:space-between;"><label>Case Sensitive</label><label class="switch"><input type="checkbox" id="caseToggle"><span class="slider"></span></label></div>
+            </div>
+            <button id="highlightBtn" class="btn-action">START SCANNING</button>
+            <button id="clearBtn" style="background:transparent; color:var(--text-main); opacity:0.5; font-size:12px; border:1px solid var(--border)" class="btn-action">CLEAR RESULTS</button>
+        </div>
+
+        <div id="traps" class="tab-content">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:5px;">
+                <label style="font-size:10px; color:var(--accent-main); font-weight:800;">VERIFICATION PATTERNS</label>
+                <div style="display:flex; gap:12px; align-items:center;">
+                    <span id="tqGear" style="cursor:pointer; font-size:16px; opacity:0.7;" title="T.Q Settings">⚙️</span>
+                    <label for="syncMd" style="cursor:pointer; font-size:16px; opacity:0.7;" title="Sync .md file">🔄</label>
+                    <input type="file" id="syncMd" accept=".md" style="display:none">
+                </div>
+            </div>
+            <textarea id="trapWords" placeholder="Add phrases to highlight..." style="height:60px"></textarea>
+            <div style="display:flex; gap:10px">
+                <button id="addTrapBtn" class="btn-action" style="flex:2">ADD PATTERN</button>
+                <button id="clearTrapsBtn" class="btn-action" style="flex:1; background:var(--accent-sub); font-size:10px;">RESET</button>
+            </div>
+            <div id="trapList" style="max-height:160px; overflow-y:auto; scrollbar-width:none"></div>
+        </div>
+
+        <div id="settings" class="tab-content">
+            <div class="config-item">
+                <label>Color Palette</label>
+                <div class="palette-container" id="paletteContainer">
+                    <!-- Color chips injected here -->
+                    <div class="add-color-btn" id="addColorBtn">+</div>
+                </div>
+                <input type="color" id="colorPicker" style="display:none">
+            </div>
+            <div class="config-row">
+                <div class="config-item" style="flex-direction:row; align-items:center; justify-content:space-between"><label>Rainbow Mode</label><label class="switch"><input type="checkbox" id="rainbowToggle" checked><span class="slider"></span></label></div>
+                <div class="config-item" style="flex-direction:row; align-items:center; justify-content:space-between"><label>Glow Effect</label><label class="switch"><input type="checkbox" id="glowToggle" checked><span class="slider"></span></label></div>
+            </div>
+            <div class="config-item" style="flex-direction:row; align-items:center; justify-content:space-between"><div><label>Stealth Engine</label><span style="font-size:8px; opacity:0.5; color:white">Randomize classes daily</span></div><label class="switch"><input type="checkbox" id="stealthMode" checked><span class="slider"></span></label></div>
+            <div class="config-item" style="flex-direction:row; align-items:center; justify-content:space-between"><label>Floating Dashboard</label><label class="switch"><input type="checkbox" id="floatingToggle" checked><span class="slider"></span></label></div>
+            <div class="config-item" style="flex-direction:row; align-items:center; justify-content:space-between"><label>T.Q Engine</label><label class="switch"><input type="checkbox" id="tqToggle" checked><span class="slider"></span></label></div>
+            <div class="config-item" style="flex-direction:row; align-items:center; justify-content:space-between"><label>Survey Protection</label><label class="switch"><input type="checkbox" id="antiDetection" checked><span class="slider"></span></label></div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <div style="display:flex; align-items:center; gap:10px;">
+            <span>Version 2.3.0 ULTIMATE</span>
+        </div>
+        <a href="https://buymeacoffee.com/antukst" target="_blank" style="text-decoration:none; color:var(--accent-main); font-weight:800; display:flex; align-items:center; gap:5px;">
+            <span style="font-size:14px;">☕</span>
+            <span>BUY ME A COFFEE</span>
+        </a>
+    </div>
+
+    <div id="tqSettingsOverlay">
+        <div class="overlay-header">
+            <div class="back-btn" id="closeTQSettings">
+                <span style="font-size:18px;">&larr;</span>
+                <span>BACK</span>
+            </div>
+            <h2 style="font-size:14px; opacity:0.5; text-transform:uppercase;">Settings</h2>
+        </div>
+        <div class="setting-item">
+            <div class="setting-info"><label>Trap Question Alert</label><span>Show popup when detection occurs</span></div>
+            <label class="switch"><input type="checkbox" id="tqAlertToggle" checked><span class="slider"></span></label>
+        </div>
+        <div class="setting-item">
+            <div class="setting-info"><label>Nano-Speed Scan</label><span>Optimized for low-latency highlighting</span></div>
+            <label class="switch"><input type="checkbox" id="tqFastScan" checked><span class="slider"></span></label>
+        </div>
+        <div class="setting-item">
+            <div class="setting-info"><label>Deep Inspection</label><span>Scan hidden elements and iframes</span></div>
+            <label class="switch"><input type="checkbox" id="tqDeepScan" checked><span class="slider"></span></label>
+        </div>
+        <div style="margin-top: auto; font-size: 10px; opacity: 0.5; text-align: center;">
+            Professional Stealth Engine Active
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
